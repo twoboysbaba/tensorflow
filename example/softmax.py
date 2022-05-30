@@ -26,3 +26,13 @@ test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
 
 print(test_loss)
 print(test_acc)
+
+predictions = model.predict(test_images)
+print(predictions[0])
+
+probability_model = tf.keras.Sequential(
+    [model,
+    tf.keras.layers.Softmax()]
+)
+predictions = probability_model.predict(test_images)
+print(predictions[0])
